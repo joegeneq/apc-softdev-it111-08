@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="elasticsearch">
+	<name>ElasticSearch - Weblinks</name>
+	<author>Jean-Baptiste Cayrou and Adrien Gareau</author>
+	<creationDate>July 2013</creationDate>
+    <copyright>Copyright 2013 CRIM - Computer Research Institute of Montreal</copyright>
+    <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
+    <authorEmail>info-deti@crim.ca</authorEmail>
+    <authorUrl>http://crim-ca.github.io/jes</authorUrl>
+	<version>1.0</version>
+	<description>ElasticSearch plugin for weblinks content</description>
+	<files>
+		<file plugin="weblinks">weblinks.php</file>
+		<filename>index.html</filename>
+		<folder>views</folder>
+	</files>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="boost" type="float"
+					description="Boost for this type"
+					label="Boost"
+					default="1.0"
+					size="5"
+				/>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

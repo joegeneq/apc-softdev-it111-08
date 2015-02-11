@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="system" method="install">
+    <name>System - ElasticaLib</name>
+    <author>Jean-Baptiste Cayrou and Adrien Gareau</author>
+    <creationDate>July 2013</creationDate>
+    <copyright>Copyright 2013 CRIM - Computer Research Institute of Montreal</copyright>
+    <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
+    <authorEmail>info-deti@crim.ca</authorEmail>
+    <authorUrl>http://crim-ca.github.io/jes</authorUrl>
+    <version>1.0.0</version>
+    <description>Register Elastica Library</description>
+    <files>
+        <filename plugin="elasticaLib">elasticaLib.php</filename>
+    </files>
+</extension>
