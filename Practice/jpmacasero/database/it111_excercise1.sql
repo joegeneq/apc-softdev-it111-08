@@ -2,13 +2,11 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
-USE `mydb` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`Region`
+-- Table `it111_excercise`.`Region`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Region` (
+CREATE TABLE IF NOT EXISTS `it111_excercise`.`Region` (
   `idRegion` INT NOT NULL AUTO_INCREMENT,
   `region_code` VARCHAR(32) NULL,
   `region_description` VARCHAR(32) NULL,
@@ -17,9 +15,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Province`
+-- Table `it111_excercise`.`Province`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Province` (
+CREATE TABLE IF NOT EXISTS `it111_excercise`.`Province` (
   `idProvince` INT NOT NULL AUTO_INCREMENT,
   `province_code` VARCHAR(32) NULL,
   `province_description` VARCHAR(32) NULL,
@@ -28,16 +26,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Province` (
   INDEX `fk_Province_Region_idx` (`Region_idRegion` ASC),
   CONSTRAINT `fk_Province_Region`
     FOREIGN KEY (`Region_idRegion`)
-    REFERENCES `mydb`.`Region` (`idRegion`)
+    REFERENCES `it111_excercise`.`Region` (`idRegion`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`City`
+-- Table `it111_excercise`.`City`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`City` (
+CREATE TABLE IF NOT EXISTS `it111_excercise`.`City` (
   `idCity` INT NOT NULL AUTO_INCREMENT,
   `city_code` VARCHAR(32) NULL,
   `city_description` VARCHAR(32) NULL,
@@ -47,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`City` (
   INDEX `fk_City_Province1_idx` (`Province_idProvince` ASC, `Province_Region_idRegion` ASC),
   CONSTRAINT `fk_City_Province1`
     FOREIGN KEY (`Province_idProvince` , `Province_Region_idRegion`)
-    REFERENCES `mydb`.`Province` (`idProvince` , `Region_idRegion`)
+    REFERENCES `it111_excercise`.`Province` (`idProvince` , `Region_idRegion`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
