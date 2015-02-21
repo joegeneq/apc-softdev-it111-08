@@ -2,11 +2,9 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use yii\helpers\ArrayHelper;
-use app\models\Region;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Province */
+/* @var $model app\models\province */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -18,10 +16,7 @@ use app\models\Region;
 
     <?= $form->field($model, 'province_description')->textInput(['maxlength' => 32]) ?>
 
-	<?= $form->field($model, 'Region_id')->dropDownList(
-			ArrayHelper::map(Region::find()->all(),'Region_id','Region_description'),
-			['prompt'=>'Select Region']
-	) ?>
+    <?= $form->field($model, 'region_idRegion')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
