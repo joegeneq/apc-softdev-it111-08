@@ -15,7 +15,7 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'idRegion') ?>
+    <?= $form->field($model, 'id') ?>
 
     <?= $form->field($model, 'Region_code') ?>
 

@@ -18,7 +18,7 @@ class ProvinceSearch extends Province
     public function rules()
     {
         return [
-            [['idProvince', 'Region_idRegion'], 'integer'],
+            [['id', 'Region_id'], 'integer'],
             [['Province_code', 'Province_Description'], 'safe'],
         ];
     }
@@ -56,8 +56,8 @@ class ProvinceSearch extends Province
         }
 
         $query->andFilterWhere([
-            'idProvince' => $this->idProvince,
-            'Region_idRegion' => $this->Region_idRegion,
+            'id' => $this->id,
+            'Region_id' => $this->Region_id,
         ]);
 
         $query->andFilterWhere(['like', 'Province_code', $this->Province_code])

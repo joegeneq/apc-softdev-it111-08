@@ -43,14 +43,14 @@ class ProvinceController extends Controller
 
     /**
      * Displays a single Province model.
-     * @param integer $idProvince
-     * @param integer $Region_idRegion
+     * @param integer $id
+     * @param integer $Region_id
      * @return mixed
      */
-    public function actionView($idProvince, $Region_idRegion)
+    public function actionView($id, $Region_id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($idProvince, $Region_idRegion),
+            'model' => $this->findModel($id, $Region_id),
         ]);
     }
 
@@ -64,7 +64,7 @@ class ProvinceController extends Controller
         $model = new Province();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'idProvince' => $model->idProvince, 'Region_idRegion' => $model->Region_idRegion]);
+            return $this->redirect(['view', 'id' => $model->id, 'Region_id' => $model->Region_id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -75,16 +75,16 @@ class ProvinceController extends Controller
     /**
      * Updates an existing Province model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $idProvince
-     * @param integer $Region_idRegion
+     * @param integer $id
+     * @param integer $Region_id
      * @return mixed
      */
-    public function actionUpdate($idProvince, $Region_idRegion)
+    public function actionUpdate($id, $Region_id)
     {
-        $model = $this->findModel($idProvince, $Region_idRegion);
+        $model = $this->findModel($id, $Region_id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'idProvince' => $model->idProvince, 'Region_idRegion' => $model->Region_idRegion]);
+            return $this->redirect(['view', 'id' => $model->id, 'Region_id' => $model->Region_id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -95,13 +95,13 @@ class ProvinceController extends Controller
     /**
      * Deletes an existing Province model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $idProvince
-     * @param integer $Region_idRegion
+     * @param integer $id
+     * @param integer $Region_id
      * @return mixed
      */
-    public function actionDelete($idProvince, $Region_idRegion)
+    public function actionDelete($id, $Region_id)
     {
-        $this->findModel($idProvince, $Region_idRegion)->delete();
+        $this->findModel($id, $Region_id)->delete();
 
         return $this->redirect(['index']);
     }
@@ -109,14 +109,14 @@ class ProvinceController extends Controller
     /**
      * Finds the Province model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $idProvince
-     * @param integer $Region_idRegion
+     * @param integer $id
+     * @param integer $Region_id
      * @return Province the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($idProvince, $Region_idRegion)
+    protected function findModel($id, $Region_id)
     {
-        if (($model = Province::findOne(['idProvince' => $idProvince, 'Region_idRegion' => $Region_idRegion])) !== null) {
+        if (($model = Province::findOne(['id' => $id, 'Region_id' => $Region_id])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
