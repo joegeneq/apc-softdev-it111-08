@@ -10,10 +10,10 @@ use Yii;
  * @property integer $id
  * @property string $province_code
  * @property string $province_description
- * @property integer $region_idRegion
+ * @property integer $region_id
  *
  * @property City[] $cities
- * @property Region $regionIdRegion
+ * @property Region $region
  */
 class Province extends \yii\db\ActiveRecord
 {
@@ -31,8 +31,8 @@ class Province extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['region_idRegion'], 'required'],
-            [['region_idRegion'], 'integer'],
+            [['region_id'], 'required'],
+            [['region_id'], 'integer'],
             [['province_code', 'province_description'], 'string', 'max' => 32]
         ];
     }
@@ -46,7 +46,7 @@ class Province extends \yii\db\ActiveRecord
             'id' => 'ID',
             'province_code' => 'Province Code',
             'province_description' => 'Province Description',
-            'region_idRegion' => 'Region Id Region',
+            'region_id' => 'Region ID',
         ];
     }
 
@@ -61,8 +61,8 @@ class Province extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getRegionIdRegion()
+    public function getRegion()
     {
-        return $this->hasOne(Region::className(), ['idRegion' => 'region_idRegion']);
+        return $this->hasOne(Region::className(), ['id' => 'region_id']);
     }
 }

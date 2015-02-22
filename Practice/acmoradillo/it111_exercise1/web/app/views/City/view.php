@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\City */
 
-$this->title = $model->id;
+$this->title = $model->idCity;
 $this->params['breadcrumbs'][] = ['label' => 'Cities', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -15,8 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id, 'province_id' => $model->province_id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id, 'province_id' => $model->province_id], [
+        <?= Html::a('Update', ['update', 'idCity' => $model->idCity, 'province_id' => $model->province_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'idCity' => $model->idCity, 'province_id' => $model->province_id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -28,10 +28,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+            'idCity',
             'city_code',
             'city_description',
-            'province.province_description',
+            'province_id',
         ],
     ]) ?>
 

@@ -8,9 +8,9 @@ use yii\data\ActiveDataProvider;
 use app\models\Region;
 
 /**
- * regionSearch represents the model behind the search form about `app\models\Region`.
+ * RegionSearch represents the model behind the search form about `app\models\Region`.
  */
-class regionSearch extends Region
+class RegionSearch extends Region
 {
     /**
      * @inheritdoc
@@ -18,7 +18,7 @@ class regionSearch extends Region
     public function rules()
     {
         return [
-            [['idRegion'], 'integer'],
+            [['id'], 'integer'],
             [['region_code', 'region_description'], 'safe'],
         ];
     }
@@ -56,7 +56,7 @@ class regionSearch extends Region
         }
 
         $query->andFilterWhere([
-            'idRegion' => $this->idRegion,
+            'id' => $this->id,
         ]);
 
         $query->andFilterWhere(['like', 'region_code', $this->region_code])

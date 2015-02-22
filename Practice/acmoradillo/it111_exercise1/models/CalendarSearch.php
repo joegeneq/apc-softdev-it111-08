@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\City;
+use app\models\Calendar;
 
 /**
- * CitySearch represents the model behind the search form about `app\models\City`.
+ * CalendarSearch represents the model behind the search form about `app\models\Calendar`.
  */
-class CitySearch extends City
+class CalendarSearch extends Calendar
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class CitySearch extends City
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['city_code', 'province_id', 'city_description'], 'safe'],
+            [['Calendar_ID', 'YEARLY_READING_SET_Reading_ID'], 'integer'],
+            [['Calendar_Year', 'Calendar_Month', 'Calendar_Date'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class CitySearch extends City
      */
     public function search($params)
     {
-        $query = City::find();
+        $query = Calendar::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -56,12 +56,12 @@ class CitySearch extends City
         }
 
         $query->andFilterWhere([
-            'id' => $this->id,
-            'province_id' => $this->province_id,
+            'Calendar_ID' => $this->Calendar_ID,
+            'Calendar_Year' => $this->Calendar_Year,
+            'Calendar_Month' => $this->Calendar_Month,
+            'Calendar_Date' => $this->Calendar_Date,
+            'YEARLY_READING_SET_Reading_ID' => $this->YEARLY_READING_SET_Reading_ID,
         ]);
-
-        $query->andFilterWhere(['like', 'city_code', $this->city_code])
-            ->andFilterWhere(['like', 'city_description', $this->city_description]);
 
         return $dataProvider;
     }

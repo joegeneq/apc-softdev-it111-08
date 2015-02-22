@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "region".
  *
- * @property integer $idRegion
+ * @property integer $id
  * @property string $region_code
  * @property string $region_description
  *
@@ -39,7 +39,7 @@ class Region extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'idRegion' => 'Id Region',
+            'id' => 'ID',
             'region_code' => 'Region Code',
             'region_description' => 'Region Description',
         ];
@@ -50,6 +50,6 @@ class Region extends \yii\db\ActiveRecord
      */
     public function getProvinces()
     {
-        return $this->hasMany(Province::className(), ['region_idRegion' => 'idRegion']);
+        return $this->hasMany(Province::className(), ['region_id' => 'id']);
     }
 }

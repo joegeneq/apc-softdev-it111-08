@@ -5,9 +5,9 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Region */
 
-$this->title = 'Update Region: ' . ' ' . $model->idRegion;
+$this->title = 'Update Region: ' . ' ' . $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Regions', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->idRegion, 'url' => ['view', 'id' => $model->idRegion]];
+$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="region-update">

@@ -2,22 +2,21 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use app\models\Region;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\ProvinceSearch */
+/* @var $searchModel app\models\CitySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Provinces';
+$this->title = 'Cities';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="province-index">
+<div class="city-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Province', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create City', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -26,14 +25,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'province_code',
-            'province_description',
-            [
-                'attribute'=>'region_id',
-                'value'=>'region.region_description',
-            ],
-
+            'idCity',
+            'city_code',
+            'city_description',
+            'province_id',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
