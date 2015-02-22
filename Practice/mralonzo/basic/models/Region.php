@@ -5,9 +5,9 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "Region".
+ * This is the model class for table "region".
  *
- * @property integer $idRegion
+ * @property integer $id
  * @property string $Region_code
  * @property string $Region_description
  *
@@ -20,7 +20,7 @@ class Region extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'Region';
+        return 'region';
     }
 
     /**
@@ -29,7 +29,8 @@ class Region extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['Region_code', 'Region_description'], 'string', 'max' => 32]
+            [['Region_code', 'Region_description'], 'string', 'max' => 32],
+            [['Region_description'], 'unique']
         ];
     }
 
@@ -39,7 +40,7 @@ class Region extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'idRegion' => 'Id Region',
+            'id' => 'ID',
             'Region_code' => 'Region Code',
             'Region_description' => 'Region Description',
         ];
@@ -50,6 +51,6 @@ class Region extends \yii\db\ActiveRecord
      */
     public function getProvinces()
     {
-        return $this->hasMany(Province::className(), ['Region_idRegion' => 'idRegion']);
+        return $this->hasMany(Province::className(), ['Region_id' => 'id']);
     }
 }

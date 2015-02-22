@@ -7,13 +7,13 @@ use Yii;
 /**
  * This is the model class for table "province".
  *
- * @property integer $idProvince
+ * @property integer $id
  * @property string $Province_code
  * @property string $Province_Description
- * @property integer $Region_idRegion
+ * @property integer $Region_id
  *
  * @property City[] $cities
- * @property Region $regionIdRegion
+ * @property Region $region
  */
 class Province extends \yii\db\ActiveRecord
 {
@@ -31,8 +31,8 @@ class Province extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['Region_idRegion'], 'required'],
-            [['Region_idRegion'], 'integer'],
+            [['Region_id'], 'required'],
+            [['Region_id'], 'integer'],
             [['Province_code', 'Province_Description'], 'string', 'max' => 32]
         ];
     }
@@ -43,10 +43,10 @@ class Province extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'idProvince' => 'Id Province',
+            'id' => 'ID',
             'Province_code' => 'Province Code',
             'Province_Description' => 'Province  Description',
-            'Region_idRegion' => 'Region Id Region',
+            'Region_id' => 'Region ID',
         ];
     }
 
@@ -55,14 +55,14 @@ class Province extends \yii\db\ActiveRecord
      */
     public function getCities()
     {
-        return $this->hasMany(City::className(), ['Province_idProvince' => 'idProvince', 'Province_Region_idRegion' => 'Region_idRegion']);
+        return $this->hasMany(City::className(), ['Province_id' => 'id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getRegionIdRegion()
+    public function getRegion()
     {
-        return $this->hasOne(Region::className(), ['idRegion' => 'Region_idRegion']);
+        return $this->hasOne(Region::className(), ['id' => 'Region_id']);
     }
 }
