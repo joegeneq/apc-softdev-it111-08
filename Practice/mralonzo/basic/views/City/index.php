@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\Province;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\CitySearch */
@@ -25,11 +26,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'idCity',
+            'id',
             'City_code',
             'City_description',
-            'Province_idProvince',
-
+            'province.Province_Description',
+	
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

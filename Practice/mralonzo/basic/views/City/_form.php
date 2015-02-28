@@ -2,13 +2,12 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use yii\helpers\ArrayHelper;
 use app\models\Province;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\City */
-/* @var $form yii\widgets\ActiveForm
-<?= $form->field($model, 'Province_idProvince')->textInput() ?> */
+/* @var $form yii\widgets\ActiveForm */
 ?>
 
 <div class="city-form">

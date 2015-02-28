@@ -3,8 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yii\helpers\ArrayHelper;
-use app\models\Region;
-use yii\web\View;
+
 /* @var $this yii\web\View */
 /* @var $model app\models\Province */
 
@@ -33,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'Province_code',
             'Province_Description',
-            'Region_id',
+            'region.Region_description',
         ],
     ]) ?>
 
