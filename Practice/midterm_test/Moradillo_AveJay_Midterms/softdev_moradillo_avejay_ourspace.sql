@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 28, 2015 at 03:49 AM
+-- Generation Time: Feb 28, 2015 at 04:25 AM
 -- Server version: 5.5.39
 -- PHP Version: 5.4.31
 
@@ -32,22 +32,11 @@ CREATE TABLE IF NOT EXISTS `myaddress` (
   `middlename` varchar(30) NOT NULL,
   `lastname` varchar(30) NOT NULL,
   `gender` varchar(1) NOT NULL,
-  `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `home_address` varchar(50) NOT NULL,
+  `landline: varchar` varchar(20) NOT NULL,
+  `cellphone` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `mycomment`
---
-
-CREATE TABLE IF NOT EXISTS `mycomment` (
-`id` int(11) NOT NULL,
-  `myaddress_id` int(11) NOT NULL,
-  `author` int(11) NOT NULL,
-  `body` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Indexes for dumped tables
@@ -59,21 +48,6 @@ CREATE TABLE IF NOT EXISTS `mycomment` (
 ALTER TABLE `myaddress`
  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `create_at` (`create_at`);
 
---
--- Indexes for table `mycomment`
---
-ALTER TABLE `mycomment`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `myaddress_id` (`myaddress_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `mycomment`
---
-ALTER TABLE `mycomment`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
