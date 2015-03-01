@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\MyaddressSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Myaddresses';
+$this->title = 'First Name';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="myaddress-index">
@@ -31,6 +31,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'lastname',
             'gender',
             // 'created_at',
+            // 'home_address',
+            // 'landline',
+            // 'cellphone',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

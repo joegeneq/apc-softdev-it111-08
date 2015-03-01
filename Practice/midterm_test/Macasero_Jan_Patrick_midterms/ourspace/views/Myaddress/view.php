@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Myaddress */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Myaddresses', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Male/Female', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="myaddress-view">
@@ -34,6 +34,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'lastname',
             'gender',
             'created_at',
+            'home_address',
+            'landline',
+            'cellphone',
         ],
     ]) ?>
 
