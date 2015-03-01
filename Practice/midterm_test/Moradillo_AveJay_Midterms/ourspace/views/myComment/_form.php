@@ -14,9 +14,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'myaddress_id')->textInput() ?>
 
-    <?= $form->field($model, 'author')->textInput() ?>
+    <?= $form->field($model, 'author')->textInput(['maxlength' => 255]) ?>
 
-    <?= $form->field($model, 'body')->textInput() ?>
+    <?= $form->field($model, 'body')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'created_at')->textInput() ?>
 
