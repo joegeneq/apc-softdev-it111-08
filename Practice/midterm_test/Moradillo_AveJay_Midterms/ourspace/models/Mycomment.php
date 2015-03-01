@@ -9,9 +9,11 @@ use Yii;
  *
  * @property integer $id
  * @property integer $myaddress_id
- * @property integer $author
- * @property integer $body
+ * @property string $author
+ * @property string $body
  * @property string $created_at
+ *
+ * @property Myaddress $myaddress
  */
 class Mycomment extends \yii\db\ActiveRecord
 {
@@ -30,9 +32,10 @@ class Mycomment extends \yii\db\ActiveRecord
     {
         return [
             [['myaddress_id', 'author', 'body'], 'required'],
-            [['myaddress_id', 'author', 'body'], 'integer'],
+            [['myaddress_id'], 'integer'],
+            [['body'], 'string'],
             [['created_at'], 'safe'],
-            [['myaddress_id'], 'unique']
+            [['author'], 'string', 'max' => 255]
         ];
     }
 
@@ -48,5 +51,13 @@ class Mycomment extends \yii\db\ActiveRecord
             'body' => 'Body',
             'created_at' => 'Created At',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getMyaddress()
+    {
+        return $this->hasOne(Myaddress::className(), ['id' => 'myaddress_id']);
     }
 }

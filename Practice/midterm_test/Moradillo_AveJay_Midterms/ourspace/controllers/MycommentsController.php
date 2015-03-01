@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Myaddress;
-use app\models\MyaddressSearch;
+use app\models\Mycomment;
+use app\models\MycommentSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * MyaddressController implements the CRUD actions for Myaddress model.
+ * MycommentsController implements the CRUD actions for Mycomment model.
  */
-class MyaddressController extends Controller
+class MycommentsController extends Controller
 {
     public function behaviors()
     {
@@ -27,12 +27,12 @@ class MyaddressController extends Controller
     }
 
     /**
-     * Lists all Myaddress models.
+     * Lists all Mycomment models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new MyaddressSearch();
+        $searchModel = new MycommentSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -42,7 +42,7 @@ class MyaddressController extends Controller
     }
 
     /**
-     * Displays a single Myaddress model.
+     * Displays a single Mycomment model.
      * @param integer $id
      * @return mixed
      */
@@ -54,13 +54,13 @@ class MyaddressController extends Controller
     }
 
     /**
-     * Creates a new Myaddress model.
+     * Creates a new Mycomment model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Myaddress();
+        $model = new Mycomment();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -72,7 +72,7 @@ class MyaddressController extends Controller
     }
 
     /**
-     * Updates an existing Myaddress model.
+     * Updates an existing Mycomment model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -91,7 +91,7 @@ class MyaddressController extends Controller
     }
 
     /**
-     * Deletes an existing Myaddress model.
+     * Deletes an existing Mycomment model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -104,15 +104,15 @@ class MyaddressController extends Controller
     }
 
     /**
-     * Finds the Myaddress model based on its primary key value.
+     * Finds the Mycomment model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Myaddress the loaded model
+     * @return Mycomment the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Myaddress::findOne($id)) !== null) {
+        if (($model = Mycomment::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
