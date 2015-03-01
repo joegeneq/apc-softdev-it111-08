@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Mycomment */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Mycomments', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Male/Female', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="mycomment-view">

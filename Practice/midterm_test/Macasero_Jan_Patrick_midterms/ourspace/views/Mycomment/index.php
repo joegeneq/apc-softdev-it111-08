@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\MycommentSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Mycomments';
+$this->title = 'First Name';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="mycomment-index">
