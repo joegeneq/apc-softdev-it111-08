@@ -19,13 +19,15 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
         <div class="col-lg-5">
             <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
-                <?= $form->field($model, 'email')->hint('Please enter your email address')->label('Email:') ?>
+               
 				<?= $form->field($model, 'username')->label('Username:') ?>
+                <?= $form->field($model, 'password')->passwordInput() ?>
+                <?= $form->field($model, 'email')->hint('Please enter your email address')->label('Email:') ?>
 				<?= $form->field($model, 'firstname')->label('Firstname:') ?>
 				<?= $form->field($model, 'lastname') ?>
-				<?= $form->field($model, 'roles')->dropDownList(['User','Admin'], ['prompt'=>'Select...'])->label('Account Type') ?>
+				<?= $form->field($model, 'roles')->dropDownList(['Core Members','None Core Members','Freelancers'], ['prompt'=>'Select...'])->label('Account Type') ?>
                 
-				<?= $form->field($model, 'password')->passwordInput() ?>
+			
                 <div class="form-group">
                     <?= Html::submitButton('Signup', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
                 </div>
