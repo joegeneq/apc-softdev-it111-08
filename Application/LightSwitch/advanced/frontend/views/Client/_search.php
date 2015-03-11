@@ -15,7 +15,9 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'client_name') ?>
+    <?= $form->field($model, 'firstname') ?>
+
+    <?= $form->field($model, 'lastname') ?>
 
     <?= $form->field($model, 'address') ?>
 
@@ -23,7 +25,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'company_name') ?>
 
-    <?= $form->field($model, 'company_position') ?>
+    <?php // echo $form->field($model, 'company_position') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

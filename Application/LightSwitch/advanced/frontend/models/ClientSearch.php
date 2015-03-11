@@ -18,7 +18,7 @@ class ClientSearch extends Client
     public function rules()
     {
         return [
-            [['client_name', 'address', 'company_name', 'company_position'], 'safe'],
+            [['firstname', 'lastname', 'address', 'company_name', 'company_position'], 'safe'],
             [['contact_number'], 'integer'],
         ];
     }
@@ -59,7 +59,8 @@ class ClientSearch extends Client
             'contact_number' => $this->contact_number,
         ]);
 
-        $query->andFilterWhere(['like', 'client_name', $this->client_name])
+        $query->andFilterWhere(['like', 'firstname', $this->firstname])
+            ->andFilterWhere(['like', 'lastname', $this->lastname])
             ->andFilterWhere(['like', 'address', $this->address])
             ->andFilterWhere(['like', 'company_name', $this->company_name])
             ->andFilterWhere(['like', 'company_position', $this->company_position]);

@@ -7,7 +7,8 @@ use Yii;
 /**
  * This is the model class for table "client".
  *
- * @property string $client_name
+ * @property string $firstname
+ * @property string $lastname
  * @property string $address
  * @property integer $contact_number
  * @property string $company_name
@@ -29,9 +30,10 @@ class Client extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['client_name', 'address', 'contact_number', 'company_name', 'company_position'], 'required'],
+            [['firstname', 'lastname', 'address', 'contact_number', 'company_name', 'company_position'], 'required'],
             [['contact_number'], 'integer'],
-            [['client_name', 'company_name', 'company_position'], 'string', 'max' => 45],
+            [['firstname', 'company_name', 'company_position'], 'string', 'max' => 45],
+            [['lastname'], 'string', 'max' => 64],
             [['address'], 'string', 'max' => 255]
         ];
     }
@@ -42,7 +44,8 @@ class Client extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'client_name' => 'Client Name',
+            'firstname' => 'Firstname',
+            'lastname' => 'Lastname',
             'address' => 'Address',
             'contact_number' => 'Contact Number',
             'company_name' => 'Company Name',

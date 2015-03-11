@@ -63,7 +63,7 @@ class ClientController extends Controller
         $model = new Client();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->client_name]);
+            return $this->redirect(['view', 'id' => $model->firstname]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -82,7 +82,7 @@ class ClientController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->client_name]);
+            return $this->redirect(['view', 'id' => $model->firstname]);
         } else {
             return $this->render('update', [
                 'model' => $model,
