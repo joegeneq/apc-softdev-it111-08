@@ -1,49 +1,93 @@
+<script src="assets/1f536bbd/js/jquery-1.9.1.min.js"></script>
+<script src="assets/1f536bbd/js/jssor.slider.mini.js"></script>
+<script>
+    jQuery(document).ready(function ($) {    
+
+        var options = {
+            $AutoPlay: true,
+            $SlideDuration: 500,
+            $ArrowKeyNavigation: true,
+            $BulletNavigatorOptions: {
+                    $Class: $JssorBulletNavigator$,
+                    $ChanceToShow: 2,
+                    $AutoCenter: 1,
+                    $Steps: 1,
+                    $Lanes: 1,
+                    $SpacingX: 1,
+                    $SpacingY: 1,
+                    $Orientation: 1
+                }        
+        };
+        var slideMain = new $JssorSlider$('slideMain', options);
+
+    });
+</script>
+
+
 <?php
 /* @var $this yii\web\View */
-$this->title = 'My Yii Application';
+$this->title = 'The Lightswitch';
 ?>
 <div class="site-index">
 
     <div class="jumbotron">
-        <h1>Congratulations!</h1>
+            
+        <center>
+            <div id="slideMain">           
+                <div class="slideDiv" u="slides">
+                    <div><img class="slideImg" u="image" src="images/Slide/L_1.png" /></div>
+                    <div><img class="slideImg" u="image" src="images/Slide/L2.jpg" /></div>
+                    <div><img class="slideImg" u="image" src="images/Slide/L_3.jpg" /></div>
+                    <div><img class="slideImg" u="image" src="images/Slide/L_4.jpg" /></div>
+                  
+                </div>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+                <!-- BULLET NAVIGATOR -->
+                <style>                   
+                    .slideBullet div, .slideBullet div:hover, .slideBullet .av
+                    {
+                        background: url(images/Navigator/b06.png) no-repeat;
+                        overflow:hidden;
+                        cursor: pointer;
+                    }
+                    .slideBullet div { background-position: -6px -6px; 
+                            margin-top: 640px;
+                    }
+                    .slideBullet div:hover, .slideBullet .av:hover { background-position: -36px -6px; }
+                    .slideBullet .av { background-position: -66px -6px; }
+                    .slideBullet .dn, .slideBullet .dn:hover { background-position: -96px -6px; }
+                </style>
+                <div u="navigator" class="slideBullet">
+                    <div u="prototype" style="position: absolute; width: 18px; height: 18px; left: 0px; top: 0px;" class=""></div>
+                    <div u="prototype" style="position: absolute; width: 18px; height: 18px; left: 19px; top: 0px;" class=""></div>
+                    <div u="prototype" style="position: absolute; width: 18px; height: 18px; left: 38px; top: 0px;" class=""></div>
+                    <div u="prototype" style="position: absolute; width: 18px; height: 18px; left: 57px; top: 0px;" class=""></div>
+                </div>
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
+            </div>
+        </center>
+
+        <br><br>
+
+       
+
     </div>
 
     <div class="body-content">
 
         <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+            
+            <div class="col-lg-9">
+                <h3>Lightswitch </h3>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
+                <p>
+                   
+                </p>
+                
             </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
+            <div class="col-lg-3">
+               
+               
             </div>
         </div>
 

@@ -1,4 +1,7 @@
 <?php
+
+
+
 $params = array_merge(
     require(__DIR__ . '/../../common/config/params.php'),
     require(__DIR__ . '/../../common/config/params-local.php'),
@@ -20,6 +23,11 @@ return [
             'charset' => 'utf8',
 			
 			],
+
+
+
+
+
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
@@ -39,3 +47,4 @@ return [
     ],
     'params' => $params,
 ];
+

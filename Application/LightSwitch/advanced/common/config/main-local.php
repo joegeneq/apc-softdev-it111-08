@@ -3,7 +3,7 @@ return [
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=127.0.0.1;dbname=kensbyn-advanced',
+            'dsn' => 'mysql:host=127.0.0.1;dbname=ls_dss',
             'username' => 'root',
             'password' => '',
             'charset' => 'utf8',
