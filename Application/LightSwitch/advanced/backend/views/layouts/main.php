@@ -36,7 +36,7 @@ AppAsset::register($this);
                 ['label' => 'Home', 'url' => ['/site/index']],
                             ['label' => 'Client', 'url' => ['/user']],
                         ['label' => 'Financial', 'url' => ['/site/financial']],
-                        ['label' => 'Inventory', 'url' => ['/site/inventory']],
+                        ['label' => 'Inventory', 'url' => ['/inventory']],
             ['label' => 'Members', 'url' => ['/site/members']],
                             ['label' => 'Project', 'url' => ['/site/project']],
                             ['label' => 'Archive', 'url' => ['/site/archive']],
