@@ -1,9 +1,10 @@
 <?php
-use backend\assets\AppAsset;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
+use frontend\assets\AppAsset;
+use frontend\widgets\Alert;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -25,7 +26,7 @@ AppAsset::register($this);
     <div class="wrap">
         <?php
             NavBar::begin([
-                'brandLabel' => 'LightSwitch',
+                'brandLabel' => 'The Lightswitch Database and Security System',
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',
@@ -33,8 +34,19 @@ AppAsset::register($this);
             ]);
             $menuItems = [
                 ['label' => 'Home', 'url' => ['/site/index']],
+                            ['label' => 'Client', 'url' => ['/user']],
+                        ['label' => 'Financial', 'url' => ['/site/financial']],
+                        ['label' => 'Inventory', 'url' => ['/site/inventory']],
+            ['label' => 'Members', 'url' => ['/site/members']],
+                            ['label' => 'Project', 'url' => ['/site/project']],
+                            ['label' => 'Archive', 'url' => ['/site/archive']],
+     
+                                  
+                                               
+                                                
             ];
             if (Yii::$app->user->isGuest) {
+                $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
                 $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
             } else {
                 $menuItems[] = [
@@ -54,6 +66,7 @@ AppAsset::register($this);
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
+        <?= Alert::widget() ?>
         <?= $content ?>
         </div>
     </div>
