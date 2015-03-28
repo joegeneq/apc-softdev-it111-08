@@ -27,6 +27,7 @@
 <?php
 /* @var $this yii\web\View */
 $this->title = 'The Lightswitch';
+
 ?>
 <div class="site-index">
 
@@ -88,7 +89,7 @@ $this->title = 'The Lightswitch';
                 <h3>Lightswitch </h3>
 
                 <p>
-                   
+                   <iframe src="https://www.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=malonzo16%40gmail.com&amp;color=%232952A3&amp;ctz=Pacific%2FMidway" style=" border-width:0 " width="800" height="600" frameborder="0" scrolling="no"></iframe>
                 </p>
                 
             </div>

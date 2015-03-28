@@ -13,6 +13,9 @@ return [
     'bootstrap' => ['log'],
     'modules' => [],
     'components' => [
+        'CALENDAR'=>array(
+'class' => 'application. extensions'.'googlecalendar'.'index.php',
+),
 	 'db' => [ 
 	        'class' => 'yii\db\Connection',
             'dsn' => 'mysql:host=localhost;dbname=ls_dss',
