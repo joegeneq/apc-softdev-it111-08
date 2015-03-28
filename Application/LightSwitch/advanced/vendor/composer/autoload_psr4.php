@@ -16,5 +16,6 @@ return array(
     'yii\\bootstrap\\' => array($vendorDir . '/yiisoft/yii2-bootstrap'),
     'yii\\' => array($vendorDir . '/yiisoft/yii2'),
     'talma\\' => array($vendorDir . '/thiagotalma/yii2-fullcalendar'),
+    'mdm\\upload\\' => array($vendorDir . '/mdmsoft/yii2-upload-file'),
     'cebe\\markdown\\' => array($vendorDir . '/cebe/markdown'),
 );

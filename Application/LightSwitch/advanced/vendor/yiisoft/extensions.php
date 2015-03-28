@@ -75,4 +75,13 @@ return array (
       '@talma' => $vendorDir . '/thiagotalma/yii2-fullcalendar',
     ),
   ),
+  'mdmsoft/yii2-upload-file' => 
+  array (
+    'name' => 'mdmsoft/yii2-upload-file',
+    'version' => '9999999-dev',
+    'alias' => 
+    array (
+      '@mdm/upload' => $vendorDir . '/mdmsoft/yii2-upload-file',
+    ),
+  ),
 );

@@ -18,7 +18,8 @@
         "yiisoft/yii2": "*",
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
-        "thiagotalma/yii2-fullcalendar": "*"
+        "thiagotalma/yii2-fullcalendar": "*",
+        "mdmsoft/yii2-upload-file": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
