@@ -72,6 +72,26 @@ $this->title = 'The Lightswitch';
        
 
     </div>
+	
+	
+	
+	
+	<?= \talma\widgets\FullCalendar::widget([
+    'googleCalendar' => true,  // If the plugin displays a Google Calendar. Default false
+    'loading' => 'Carregando...', // Text for loading alert. Default 'Loading...'
+    'config' => [
+        // put your options and callbacks here
+        // see http://arshaw.com/fullcalendar/docs/
+        'lang' => 'pt-br', // optional, if empty get app language
+        ...
+    ],
+]); ?>
+	
+	
+	
+	
+	
+	
 
     <div class="body-content">
 
