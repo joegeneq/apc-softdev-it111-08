@@ -1,6 +1,7 @@
 <?php
 namespace frontend\models;
 
+use backend\models\AuthAssignment;
 use common\models\User;
 use yii\base\Model;
 use Yii;
@@ -58,9 +59,19 @@ class SignupForm extends Model
 			$user->roles = $this ->roles;
             $user->setPassword($this->password);
             $user->generateAuthKey();
-            if ($user->save()) {
-                return $user;
+            $user->save();
+            return $user;
+
+            $rolelist = $_POST['SignupForm']['roles'];
+            foreach ($rolelist as $value) 
+            {
+                 $newRole = new AuthAssignment;
+                 $newRole->user_id = $user->id;
+                 $newRole->item_name = $value;
+                 $newRole->save();
             }
+           
+            
         }
 
         return null;

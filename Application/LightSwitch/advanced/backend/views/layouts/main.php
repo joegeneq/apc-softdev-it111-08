@@ -26,7 +26,8 @@ AppAsset::register($this);
     <div class="wrap">
         <?php
             NavBar::begin([
-                'brandLabel' => 'The Lightswitch Database and Security System',
+
+               'brandLabel' => '<img src="images/icon.jpg">',
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',
@@ -37,7 +38,7 @@ AppAsset::register($this);
                             ['label' => 'Client', 'url' => ['/user']],
                         ['label' => 'Financial', 'url' => ['/site/financial']],
                         ['label' => 'Inventory', 'url' => ['/inventory']],
-            ['label' => 'Members', 'url' => ['/site/members']],
+                      ['label' => 'Members', 'url' => ['/members']],
                             ['label' => 'Project', 'url' => ['/site/project']],
                             ['label' => 'Archive', 'url' => ['/site/archive']],
      
