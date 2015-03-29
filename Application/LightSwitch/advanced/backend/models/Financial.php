@@ -24,6 +24,8 @@ class Financial extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+
+    public $file;
     public static function tableName()
     {
         return 'financial';
@@ -39,7 +41,8 @@ class Financial extends \yii\db\ActiveRecord
             [['package_price', 'vat', 'tls_cut', 'talent_fee', 'total'], 'number'],
             [['receipt_no'], 'integer'],
             [['receipt_date', 'record_added', 'time_updated'], 'safe'],
-            [['update_by'], 'string', 'max' => 45]
+            [['file'], 'file'],
+            [['update_by', 'files', 'file_name'], 'string', 'max' => 45]
         ];
     }
 
@@ -57,6 +60,8 @@ class Financial extends \yii\db\ActiveRecord
             'tls_cut' => 'Tls Cut',
             'talent_fee' => 'Talent Fee',
             'total' => 'Total',
+            'file_name' => 'File Name',
+            'file' => 'Files',
             'record_added' => 'Record Added',
             'update_by' => 'Update By',
             'time_updated' => 'Time Updated',

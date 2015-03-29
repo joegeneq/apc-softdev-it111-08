@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.12
+-- version 4.0.4
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 30, 2015 at 05:59 AM
--- Server version: 5.6.16
--- PHP Version: 5.5.11
+-- Generation Time: Mar 30, 2015 at 12:38 AM
+-- Server version: 5.5.32
+-- PHP Version: 5.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `ls_dss`
 --
+CREATE DATABASE IF NOT EXISTS `ls_dss` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `ls_dss`;
 
 -- --------------------------------------------------------
 
@@ -33,13 +35,6 @@ CREATE TABLE IF NOT EXISTS `auth_assignment` (
   PRIMARY KEY (`item_name`,`user_id`),
   UNIQUE KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `auth_assignment`
---
-
-INSERT INTO `auth_assignment` (`item_name`, `user_id`, `created_at`) VALUES
-('Client', 22, NULL);
 
 -- --------------------------------------------------------
 
@@ -128,11 +123,20 @@ CREATE TABLE IF NOT EXISTS `financial` (
   `tls_cut` decimal(9,2) NOT NULL,
   `talent_fee` decimal(9,2) NOT NULL,
   `total` decimal(9,2) NOT NULL,
+  `file_name` varchar(45) NOT NULL,
+  `files` varchar(200) NOT NULL,
   `record_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `update_by` varchar(45) NOT NULL,
   `time_updated` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+
+--
+-- Dumping data for table `financial`
+--
+
+INSERT INTO `financial` (`id`, `package_price`, `receipt_no`, `receipt_date`, `vat`, `tls_cut`, `talent_fee`, `total`, `file_name`, `files`, `record_added`, `update_by`, `time_updated`) VALUES
+(11, '112312.00', 12, '0000-00-00', '21.00', '222.00', '22.00', '222222.00', 'Test Picture', 'uploads/Test Picture.png', '2015-03-29 22:37:52', 'me', '2000-01-09 16:00:00');
 
 -- --------------------------------------------------------
 
@@ -152,24 +156,6 @@ CREATE TABLE IF NOT EXISTS `inventory` (
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`Code`,`user_id`),
   KEY `fk_inventory_user1_idx` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `members`
---
-
-CREATE TABLE IF NOT EXISTS `members` (
-  `id` int(11) NOT NULL,
-  `firstname` varchar(45) NOT NULL,
-  `lastname` varchar(45) NOT NULL,
-  `middlename` varchar(45) NOT NULL,
-  `status` varchar(45) NOT NULL,
-  `contact` varchar(45) NOT NULL,
-  `specialization` varchar(45) NOT NULL,
-  `address` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -215,7 +201,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `roles` (`roles`),
   KEY `company` (`company`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=23 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=22 ;
 
 --
 -- Dumping data for table `user`
@@ -223,8 +209,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`id`, `username`, `firstname`, `lastname`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `roles`, `company`, `status`, `created_at`, `updated_at`) VALUES
 (20, 'admin', 'admin', 'istrator', 'OcMOJI3ZypsfSxsYUc6mEVRIoWYY7xjT', '$2y$13$6910NasmfrWoWKblMZjkhOXfXHrhRqQE1AcG7KY1ACvfNWGI0IUHG', NULL, 'admin@sample.com', 'Core-Members', 0, 10, 1427509203, 1427509203),
-(21, 'demo', 'demo', 'nstration', 'AOKhr7r8LAOjNbfBI2Wl228jqQdVGCwm', '$2y$13$x9QtJN3RxyE2sGSCX3kcPe2QMtqptKpr4ual00kD4Wizgzvdap0Rq', NULL, 'demo@sample.com', 'Client', 0, 10, 1427509335, 1427509335),
-(22, 'test', 'test', 'test', 'YZXQz0HTyVprqWAxLPTYOUK2LjrQfKZZ', '$2y$13$YtCoyV1FdqtYsVwTPtGVmeQg1Orc6mRq7Ae0hJ4Xcd/jkNDvfT4yi', NULL, 'test@sample.com', '', 0, 10, 1427666255, 1427666255);
+(21, 'demo', 'demo', 'nstration', 'AOKhr7r8LAOjNbfBI2Wl228jqQdVGCwm', '$2y$13$x9QtJN3RxyE2sGSCX3kcPe2QMtqptKpr4ual00kD4Wizgzvdap0Rq', NULL, 'demo@sample.com', 'Client', 0, 10, 1427509335, 1427509335);
 
 --
 -- Constraints for dumped tables
@@ -255,6 +240,12 @@ ALTER TABLE `auth_item_child`
 --
 ALTER TABLE `inventory`
   ADD CONSTRAINT `fk_inventory_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `user`
+--
+ALTER TABLE `user`
+  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`roles`) REFERENCES `auth_item` (`name`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

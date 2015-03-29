@@ -10,7 +10,7 @@ use yii\widgets\ActiveForm;
 
 <div class="financial-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'package_price')->textInput(['maxlength' => 9]) ?>
 
@@ -25,6 +25,10 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'talent_fee')->textInput(['maxlength' => 9]) ?>
 
     <?= $form->field($model, 'total')->textInput(['maxlength' => 9]) ?>
+
+    <?= $form->field($model, 'file_name')->textInput(['maxlength' => 45]) ?>
+
+    <?= $form->field($model, 'file' )->fileInput(); ?>
 
     <?= $form->field($model, 'record_added')->textInput() ?>
 
