@@ -19,7 +19,14 @@ return [
         'authManager' => [
                            'class' => 'yii\rbac\DbManager',
                            'defaultRoles' => ['guest'],
-          ], 
+          ],
+
+    'as access' => [
+            'class' => 'mdm\admin\components\AccessControl',
+            'allowActions' => [
+                'admin/*', // add or remove allowed actions to this list
+            ]
+        ], 
 
 	 'db' => [ 
 	        'class' => 'yii\db\Connection',
@@ -48,6 +55,10 @@ return [
             'errorAction' => 'site/error',
         ],
     ],
-    'modules'=>[],
+    'modules'=>[
+        'admin' => [
+            'class' => 'mdm\admin\Module',
+        ]
+    ],
     'params' => $params,
 ];

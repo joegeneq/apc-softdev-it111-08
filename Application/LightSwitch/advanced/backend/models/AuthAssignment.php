@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace backend\models;
 
 use Yii;
 
@@ -11,8 +11,8 @@ use Yii;
  * @property integer $user_id
  * @property integer $created_at
  *
- * @property User $user
  * @property AuthItem $itemName
+ * @property User $user
  */
 class AuthAssignment extends \yii\db\ActiveRecord
 {
@@ -52,16 +52,16 @@ class AuthAssignment extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getUser()
+    public function getItemName()
     {
-        return $this->hasOne(User::className(), ['id' => 'user_id']);
+        return $this->hasOne(AuthItem::className(), ['name' => 'item_name']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getItemName()
+    public function getUser()
     {
-        return $this->hasOne(AuthItem::className(), ['name' => 'item_name']);
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 }
