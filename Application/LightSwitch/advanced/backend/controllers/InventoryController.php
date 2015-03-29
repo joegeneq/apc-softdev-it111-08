@@ -8,6 +8,7 @@ use app\models\InventorySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\ForbiddenHttpException;
 
 /**
  * InventoryController implements the CRUD actions for Inventory model.
@@ -61,14 +62,19 @@ class InventoryController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Inventory();
+        if( Yii::$app->user->can('Core-Members'))
+        {
+            $model = new Inventory();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'Code' => $model->Code, 'user_id' => $model->user_id]);
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'Code' => $model->Code, 'user_id' => $model->user_id]);
+            } else {
+                return $this->render('create', [
+                    'model' => $model,
+                ]);
+            }
         } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+           throw new ForbiddenHttpException('Are you a Core Member?');
         }
     }
 

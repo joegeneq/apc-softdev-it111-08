@@ -9,6 +9,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\ForbiddenHttpException;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -75,15 +76,21 @@ class UserController extends Controller
      */
     public function actionCreate()
     {
-        $model = new User();
+        //if( Yii::$app->user->can('Core-Members'))
+        //{
+            $model = new User();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
-        }
+                if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                     return $this->redirect(['view', 'id' => $model->id]);
+                } else {
+                    return $this->render('create', [
+                    'model' => $model,
+                    ]);
+                } 
+        //} else {
+           // throw new ForbiddenHttpException;
+        //}
+        
     }
 
     /**

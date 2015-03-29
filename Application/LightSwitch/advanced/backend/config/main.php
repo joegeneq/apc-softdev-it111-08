@@ -7,15 +7,20 @@ $params = array_merge(
 );
 
 return [
+'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
+'extensions' => require(__DIR__ . '/../../vendor/yiisoft/extensions.php'),
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'modules' => [],
+ 
     'components' => [
-        'CALENDAR'=>array(
-'class' => 'application. extensions'.'googlecalendar'.'index.php',
-),
+
+        'authManager' => [
+                           'class' => 'yii\rbac\DbManager',
+                           'defaultRoles' => ['guest'],
+          ], 
+
 	 'db' => [ 
 	        'class' => 'yii\db\Connection',
             'dsn' => 'mysql:host=localhost;dbname=ls_dss',
@@ -37,9 +42,12 @@ return [
                 ],
             ],
         ],
+          
+    
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
     ],
+    'modules'=>[],
     'params' => $params,
 ];
