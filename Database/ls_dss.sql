@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4
+-- version 4.1.12
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 30, 2015 at 12:38 AM
--- Server version: 5.5.32
--- PHP Version: 5.4.16
+-- Generation Time: Mar 30, 2015 at 08:45 AM
+-- Server version: 5.6.16
+-- PHP Version: 5.5.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `ls_dss`
 --
-CREATE DATABASE IF NOT EXISTS `ls_dss` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `ls_dss`;
 
 -- --------------------------------------------------------
 
@@ -35,6 +33,14 @@ CREATE TABLE IF NOT EXISTS `auth_assignment` (
   PRIMARY KEY (`item_name`,`user_id`),
   UNIQUE KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `auth_assignment`
+--
+
+INSERT INTO `auth_assignment` (`item_name`, `user_id`, `created_at`) VALUES
+('Client', 28, NULL),
+('Core-Members', 26, NULL);
 
 -- --------------------------------------------------------
 
@@ -129,14 +135,15 @@ CREATE TABLE IF NOT EXISTS `financial` (
   `update_by` varchar(45) NOT NULL,
   `time_updated` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `financial`
 --
 
 INSERT INTO `financial` (`id`, `package_price`, `receipt_no`, `receipt_date`, `vat`, `tls_cut`, `talent_fee`, `total`, `file_name`, `files`, `record_added`, `update_by`, `time_updated`) VALUES
-(11, '112312.00', 12, '0000-00-00', '21.00', '222.00', '22.00', '222222.00', 'Test Picture', 'uploads/Test Picture.png', '2015-03-29 22:37:52', 'me', '2000-01-09 16:00:00');
+(11, '112312.00', 12, '0000-00-00', '21.00', '222.00', '22.00', '222222.00', 'Test Picture', 'uploads/Test Picture.png', '2015-03-29 22:37:52', 'me', '2000-01-09 16:00:00'),
+(12, '100.00', 100, '0000-00-00', '100.00', '100.00', '1000.00', '1001.00', 'test', 'uploads/test.txt', '2015-03-30 00:10:20', '12', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -156,6 +163,24 @@ CREATE TABLE IF NOT EXISTS `inventory` (
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`Code`,`user_id`),
   KEY `fk_inventory_user1_idx` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `members`
+--
+
+CREATE TABLE IF NOT EXISTS `members` (
+  `id` int(11) NOT NULL,
+  `firstname` varchar(45) NOT NULL,
+  `lastname` varchar(45) NOT NULL,
+  `middlename` varchar(45) NOT NULL,
+  `status` varchar(45) NOT NULL,
+  `contact` varchar(45) NOT NULL,
+  `specialization` varchar(45) NOT NULL,
+  `address` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -193,23 +218,21 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password_hash` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password_reset_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `roles` varchar(64) CHARACTER SET latin1 NOT NULL,
+  `roles` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `company` int(11) NOT NULL,
   `status` smallint(6) NOT NULL DEFAULT '10',
   `created_at` int(11) NOT NULL,
   `updated_at` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `roles` (`roles`),
   KEY `company` (`company`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=29 ;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `username`, `firstname`, `lastname`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `roles`, `company`, `status`, `created_at`, `updated_at`) VALUES
-(20, 'admin', 'admin', 'istrator', 'OcMOJI3ZypsfSxsYUc6mEVRIoWYY7xjT', '$2y$13$6910NasmfrWoWKblMZjkhOXfXHrhRqQE1AcG7KY1ACvfNWGI0IUHG', NULL, 'admin@sample.com', 'Core-Members', 0, 10, 1427509203, 1427509203),
-(21, 'demo', 'demo', 'nstration', 'AOKhr7r8LAOjNbfBI2Wl228jqQdVGCwm', '$2y$13$x9QtJN3RxyE2sGSCX3kcPe2QMtqptKpr4ual00kD4Wizgzvdap0Rq', NULL, 'demo@sample.com', 'Client', 0, 10, 1427509335, 1427509335);
+(28, 'test2', 'test2', 'tets', '8bP1zk7MJuJlY4-aLSBAN-Gf9FLus5wz', '$2y$13$3EsP5.ukTLI/JK.Wkz16le5Fa/eaJv./TxtFOjmUgjWgNd8LLttbq', NULL, 'testtest@testc.test1', '', 0, 10, 1427675166, 1427675166);
 
 --
 -- Constraints for dumped tables
@@ -219,8 +242,7 @@ INSERT INTO `user` (`id`, `username`, `firstname`, `lastname`, `auth_key`, `pass
 -- Constraints for table `auth_assignment`
 --
 ALTER TABLE `auth_assignment`
-  ADD CONSTRAINT `auth_assignment_ibfk_1` FOREIGN KEY (`item_name`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `auth_assignment_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `auth_assignment_ibfk_1` FOREIGN KEY (`item_name`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `auth_item`
@@ -240,12 +262,6 @@ ALTER TABLE `auth_item_child`
 --
 ALTER TABLE `inventory`
   ADD CONSTRAINT `fk_inventory_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `user`
---
-ALTER TABLE `user`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`roles`) REFERENCES `auth_item` (`name`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
