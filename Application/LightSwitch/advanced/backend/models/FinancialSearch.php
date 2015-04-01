@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Financial;
+use app\models\financial;
 
 /**
- * FinancialSearch represents the model behind the search form about `app\models\Financial`.
+ * FinancialSearch represents the model behind the search form about `app\models\financial`.
  */
-class FinancialSearch extends Financial
+class FinancialSearch extends financial
 {
     /**
      * @inheritdoc
@@ -42,7 +42,7 @@ class FinancialSearch extends Financial
      */
     public function search($params)
     {
-        $query = Financial::find();
+        $query = financial::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

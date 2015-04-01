@@ -35,7 +35,6 @@ class SignupForm extends Model
             ['email', 'required'],
             ['email', 'email'],
             ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This email address has already been taken.'],
-
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
 			
@@ -56,6 +55,7 @@ class SignupForm extends Model
 			$user->firstname = $this->firstname;
 			$user->lastname = $this->lastname;
             $user->email = $this->email;
+            //$user->roles = $this->roles;
             $user->setPassword($this->password);
             $user->generateAuthKey();
             $user->save();

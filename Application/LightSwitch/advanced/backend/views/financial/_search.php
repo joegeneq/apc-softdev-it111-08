@@ -31,6 +31,10 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'total') ?>
 
+    <?php // echo $form->field($model, 'file_name') ?>
+
+    <?php // echo $form->field($model, 'files') ?>
+
     <?php // echo $form->field($model, 'record_added') ?>
 
     <?php // echo $form->field($model, 'update_by') ?>

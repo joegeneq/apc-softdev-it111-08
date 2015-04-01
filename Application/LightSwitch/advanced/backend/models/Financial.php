@@ -21,11 +21,12 @@ use Yii;
  * @property string $update_by
  * @property string $time_updated
  */
-class Financial extends \yii\db\ActiveRecord
+class financial extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
+    public $file;
     public static function tableName()
     {
         return 'financial';
@@ -41,8 +42,8 @@ class Financial extends \yii\db\ActiveRecord
             [['package_price', 'vat', 'tls_cut', 'talent_fee', 'total'], 'number'],
             [['receipt_no'], 'integer'],
             [['receipt_date', 'record_added', 'time_updated'], 'safe'],
-            [['file_name', 'update_by'], 'string', 'max' => 45],
-            [['files'], 'string', 'max' => 200]
+            [['file'], 'file'],
+            [['update_by', 'files', 'file_name'], 'string', 'max' => 45]
         ];
     }
 

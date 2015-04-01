@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Financial */
+/* @var $model app\models\financial */
 
 $this->title = 'Create Financial';
 $this->params['breadcrumbs'][] = ['label' => 'Financials', 'url' => ['index']];
