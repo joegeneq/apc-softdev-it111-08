@@ -15,6 +15,8 @@ use Yii;
  * @property string $tls_cut
  * @property string $talent_fee
  * @property string $total
+ * @property string $file_name
+ * @property string $files
  * @property string $record_added
  * @property string $update_by
  * @property string $time_updated
@@ -24,8 +26,6 @@ class Financial extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-
-    public $file;
     public static function tableName()
     {
         return 'financial';
@@ -37,12 +37,12 @@ class Financial extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['package_price', 'receipt_no', 'receipt_date', 'vat', 'tls_cut', 'talent_fee', 'total', 'update_by'], 'required'],
+            [['package_price', 'receipt_no', 'receipt_date', 'vat', 'tls_cut', 'talent_fee', 'total', 'file_name', 'files', 'update_by'], 'required'],
             [['package_price', 'vat', 'tls_cut', 'talent_fee', 'total'], 'number'],
             [['receipt_no'], 'integer'],
             [['receipt_date', 'record_added', 'time_updated'], 'safe'],
-            [['file'], 'file'],
-            [['update_by', 'files', 'file_name'], 'string', 'max' => 45]
+            [['file_name', 'update_by'], 'string', 'max' => 45],
+            [['files'], 'string', 'max' => 200]
         ];
     }
 
@@ -61,7 +61,7 @@ class Financial extends \yii\db\ActiveRecord
             'talent_fee' => 'Talent Fee',
             'total' => 'Total',
             'file_name' => 'File Name',
-            'file' => 'Files',
+            'files' => 'Files',
             'record_added' => 'Record Added',
             'update_by' => 'Update By',
             'time_updated' => 'Time Updated',

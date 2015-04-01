@@ -20,7 +20,7 @@ class FinancialSearch extends Financial
         return [
             [['id', 'receipt_no'], 'integer'],
             [['package_price', 'vat', 'tls_cut', 'talent_fee', 'total'], 'number'],
-            [['receipt_date', 'record_added', 'update_by', 'time_updated'], 'safe'],
+            [['receipt_date', 'file_name', 'files', 'record_added', 'update_by', 'time_updated'], 'safe'],
         ];
     }
 
@@ -69,7 +69,9 @@ class FinancialSearch extends Financial
             'time_updated' => $this->time_updated,
         ]);
 
-        $query->andFilterWhere(['like', 'update_by', $this->update_by]);
+        $query->andFilterWhere(['like', 'file_name', $this->file_name])
+            ->andFilterWhere(['like', 'files', $this->files])
+            ->andFilterWhere(['like', 'update_by', $this->update_by]);
 
         return $dataProvider;
     }
