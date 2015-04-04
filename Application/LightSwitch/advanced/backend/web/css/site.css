@@ -238,39 +238,6 @@ a.desc:after {
 
 
 
-/* Login */
-
-.site-login {
-  padding: 30px 15px;
-  margin-bottom: 30px;  
-  text-align: center;
-}
-
-.btn, .btn-primary {
-    background-color: #3B8215;
-    border-color: #A9DE91;
-}
-
-.btn:hover, .btn-primary:hover {
-    background-color: #3B8215;
-    border-color: #3B8215;
-    color: #F9FF89;
-}
-
-@media screen and (min-width: 768px) {
-  .site-login {
-    padding: 48px 0;
-  }
-  .container .site-login,
-  .container-fluid .site-login {
-    padding-right: 60px;
-    padding-left: 60px;
-  }
-  .site-login h1,
-  .site-login .h1 {
-    font-size: 63px;
-  }
-}
 
 
 /*login form */
@@ -313,5 +280,3 @@ a.desc:after {
   background-color: #E5E4E2;
   border-color: #ccc;
 }
-
-
