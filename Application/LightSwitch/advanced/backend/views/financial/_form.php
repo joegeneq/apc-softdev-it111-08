@@ -18,6 +18,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'receipt_date')->textInput() ?>
 
+
     <?= $form->field($model, 'vat')->textInput(['maxlength' => 9]) ?>
 
     <?= $form->field($model, 'tls_cut')->textInput(['maxlength' => 9]) ?>
