@@ -125,7 +125,7 @@ a.desc:after {
 
 .navbar-inverse {
  background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#919191));
-  background:-moz-linear-gradient(center top , #030303, #717471) repeat scroll 0% 0% transparent;
+  background: -moz-linear-gradient(top, #A9DE91, #3B8215);
   background: -o-linear-gradient(top, #A9DE91,  #3B8215);
   border-color: transparent;
 }
@@ -170,7 +170,7 @@ a.desc:after {
   padding: 30px 15px;
   margin-bottom: 30px;
   color: inherit;
-
+  background-color: #F0F8FF;
 }
 .jumbotron h1,
 .jumbotron .h1 {
@@ -238,6 +238,29 @@ a.desc:after {
 
 
 
+/* Login */
+
+.site-login {
+  padding: 30px 15px;
+  margin-bottom: 30px;  
+  text-align: center;
+}
+
+
+@media screen and (min-width: 768px) {
+  .site-login {
+    padding: 48px 0;
+  }
+  .container .site-login,
+  .container-fluid .site-login {
+    padding-right: 60px;
+    padding-left: 60px;
+  }
+  .site-login h1,
+  .site-login .h1 {
+    font-size: 63px;
+  }
+}
 
 
 /*login form */
@@ -280,3 +303,5 @@ a.desc:after {
   background-color: #E5E4E2;
   border-color: #ccc;
 }
+
+
