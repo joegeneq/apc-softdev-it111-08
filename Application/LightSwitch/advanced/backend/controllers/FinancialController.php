@@ -3,7 +3,7 @@
 namespace backend\controllers;
 
 use Yii;
-use app\models\Financial;
+use app\models\financial;
 use app\models\FinancialSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -11,7 +11,7 @@ use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 
 /**
- * FinancialController implements the CRUD actions for Financial model.
+ * FinancialController implements the CRUD actions for financial model.
  */
 class FinancialController extends Controller
 {
@@ -28,7 +28,7 @@ class FinancialController extends Controller
     }
 
     /**
-     * Lists all Financial models.
+     * Lists all financial models.
      * @return mixed
      */
     public function actionIndex()
@@ -43,7 +43,7 @@ class FinancialController extends Controller
     }
 
     /**
-     * Displays a single Financial model.
+     * Displays a single financial model.
      * @param integer $id
      * @return mixed
      */
@@ -55,16 +55,34 @@ class FinancialController extends Controller
     }
 
     /**
-     * Creates a new Financial model.
+     * Creates a new financial model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Financial();
+        $model = new financial();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) 
-        {
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('create', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    /**
+     * Updates an existing financial model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionUpdate($id)
+    {
+        $model = $this->findModel($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
             // get the instance of the uploaded file
              $imageName = $model->file_name;
@@ -75,26 +93,6 @@ class FinancialController extends Controller
              $model->files = 'uploads/'.$imageName.'.'.$model->file->extension;
              $model->save();
 
-
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
-        }
-    }
-
-    /**
-     * Updates an existing Financial model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionUpdate($id)
-    {
-        $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
@@ -104,7 +102,7 @@ class FinancialController extends Controller
     }
 
     /**
-     * Deletes an existing Financial model.
+     * Deletes an existing financial model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -117,15 +115,15 @@ class FinancialController extends Controller
     }
 
     /**
-     * Finds the Financial model based on its primary key value.
+     * Finds the financial model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Financial the loaded model
+     * @return financial the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Financial::findOne($id)) !== null) {
+        if (($model = financial::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

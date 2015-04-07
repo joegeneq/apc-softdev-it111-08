@@ -27,7 +27,7 @@ AppAsset::register($this);
         <?php
             NavBar::begin([
 
-               'brandLabel' => '<img src="images/icon.jpg">',
+               'brandLabel' => '<img src="images/icon1.png">',
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',
@@ -47,7 +47,7 @@ AppAsset::register($this);
                                                 
             ];
             if (Yii::$app->user->isGuest) {
-                $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
+                //$menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
                 $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
             } else {
                 $menuItems[] = [

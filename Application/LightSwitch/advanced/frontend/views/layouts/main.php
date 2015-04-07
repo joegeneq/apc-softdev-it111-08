@@ -5,10 +5,8 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use frontend\widgets\Alert;
-
 /* @var $this \yii\web\View */
 /* @var $content string */
-
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -26,7 +24,7 @@ AppAsset::register($this);
     <div class="wrap">
         <?php
             NavBar::begin([
-                'brandLabel' => 'The Lightswitch Database and Security System',
+                'brandLabel' => '<img src="images/icon1.png">',
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',
@@ -34,6 +32,7 @@ AppAsset::register($this);
             ]);
            /* $menuItems = [
                 ['label' => 'Home', 'url' => ['/site/index']],
+<<<<<<< HEAD
                             ['label' => 'Client', 'url' => ['/user']],
                         ['label' => 'Financial', 'url' => ['/site/financial']],
                         ['label' => 'Inventory', 'url' => ['/site/inventory']],
@@ -42,6 +41,10 @@ AppAsset::register($this);
                             ['label' => 'Archive', 'url' => ['/site/archive']],
      
                             
+=======
+           
+                                  
+>>>>>>> fb23ebe6f638de1b79815130063026635a668e7d
                                                
                                                 
             ];*/

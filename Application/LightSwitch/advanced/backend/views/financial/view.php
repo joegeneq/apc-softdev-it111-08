@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Financial */
+/* @var $model app\models\financial */
 
 $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Financials', 'url' => ['index']];
@@ -36,6 +36,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'tls_cut',
             'talent_fee',
             'total',
+            'file_name',
+            'files',
             'record_added',
             'update_by',
             'time_updated',

@@ -33,6 +33,8 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'tls_cut',
             // 'talent_fee',
             // 'total',
+            // 'file_name',
+            // 'files',
             // 'record_added',
             // 'update_by',
             // 'time_updated',

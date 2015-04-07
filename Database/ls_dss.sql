@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 30, 2015 at 08:45 AM
+-- Generation Time: Apr 01, 2015 at 10:46 AM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -39,8 +39,10 @@ CREATE TABLE IF NOT EXISTS `auth_assignment` (
 --
 
 INSERT INTO `auth_assignment` (`item_name`, `user_id`, `created_at`) VALUES
+('Administrator', 30, NULL),
 ('Client', 28, NULL),
-('Core-Members', 26, NULL);
+('Core-Members', 26, NULL),
+('None-Core-Members', 29, NULL);
 
 -- --------------------------------------------------------
 
@@ -66,6 +68,7 @@ CREATE TABLE IF NOT EXISTS `auth_item` (
 --
 
 INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `created_at`, `updated_at`) VALUES
+('Administrator', 5, 'Root user', NULL, NULL, NULL, NULL),
 ('Client', 4, NULL, NULL, NULL, NULL, NULL),
 ('Core-Members', 1, NULL, NULL, NULL, NULL, NULL),
 ('Freelancers', 3, NULL, NULL, NULL, NULL, NULL),
@@ -83,6 +86,16 @@ CREATE TABLE IF NOT EXISTS `auth_item_child` (
   PRIMARY KEY (`parent`,`child`),
   KEY `child` (`child`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `auth_item_child`
+--
+
+INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
+('Administrator', 'Client'),
+('Administrator', 'Core-Members'),
+('Administrator', 'Freelancers'),
+('Administrator', 'None-Core-Members');
 
 -- --------------------------------------------------------
 
@@ -135,15 +148,14 @@ CREATE TABLE IF NOT EXISTS `financial` (
   `update_by` varchar(45) NOT NULL,
   `time_updated` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `financial`
 --
 
 INSERT INTO `financial` (`id`, `package_price`, `receipt_no`, `receipt_date`, `vat`, `tls_cut`, `talent_fee`, `total`, `file_name`, `files`, `record_added`, `update_by`, `time_updated`) VALUES
-(11, '112312.00', 12, '0000-00-00', '21.00', '222.00', '22.00', '222222.00', 'Test Picture', 'uploads/Test Picture.png', '2015-03-29 22:37:52', 'me', '2000-01-09 16:00:00'),
-(12, '100.00', 100, '0000-00-00', '100.00', '100.00', '1000.00', '1001.00', 'test', 'uploads/test.txt', '2015-03-30 00:10:20', '12', '0000-00-00 00:00:00');
+(11, '112312.00', 12, '0000-00-00', '21.00', '222.00', '22.00', '222222.00', 'Test Picture', 'uploads/Test Picture.png', '2015-03-29 22:37:52', 'me', '2000-01-09 16:00:00');
 
 -- --------------------------------------------------------
 
@@ -225,14 +237,15 @@ CREATE TABLE IF NOT EXISTS `user` (
   `updated_at` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `company` (`company`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=29 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=31 ;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `username`, `firstname`, `lastname`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `roles`, `company`, `status`, `created_at`, `updated_at`) VALUES
-(28, 'test2', 'test2', 'tets', '8bP1zk7MJuJlY4-aLSBAN-Gf9FLus5wz', '$2y$13$3EsP5.ukTLI/JK.Wkz16le5Fa/eaJv./TxtFOjmUgjWgNd8LLttbq', NULL, 'testtest@testc.test1', '', 0, 10, 1427675166, 1427675166);
+(28, 'test2', 'test2', 'tets', '8bP1zk7MJuJlY4-aLSBAN-Gf9FLus5wz', '$2y$13$3EsP5.ukTLI/JK.Wkz16le5Fa/eaJv./TxtFOjmUgjWgNd8LLttbq', NULL, 'testtest@testc.test1', '', 0, 10, 1427675166, 1427675166),
+(30, 'admin', 'admin', 'nstration', '18x7fmHzzaPutNpTWYsWPphDCtD6jx-w', '$2y$13$HVM30jH1jfz1c.UvV71sTupdAPKdAqv9rG.6ZMze/VSSWpFKyrwcK', NULL, 'admin@sample.com', '', 0, 10, 1427856104, 1427856104);
 
 --
 -- Constraints for dumped tables

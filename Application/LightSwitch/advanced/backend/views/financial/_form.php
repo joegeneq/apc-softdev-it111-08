@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Financial */
+/* @var $model app\models\financial */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -17,6 +17,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'receipt_no')->textInput() ?>
 
     <?= $form->field($model, 'receipt_date')->textInput() ?>
+
 
     <?= $form->field($model, 'vat')->textInput(['maxlength' => 9]) ?>
 
