@@ -9,6 +9,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use yii\web\ForbiddenHttpException;
+
 
 /**
  * FinancialController implements the CRUD actions for financial model.
@@ -61,14 +63,19 @@ class FinancialController extends Controller
      */
     public function actionCreate()
     {
-        $model = new financial();
+        if( Yii::$app->user->can('Core-Members'))
+        {
+            $model = new financial();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            } else {
+                return $this->render('create', [
+                    'model' => $model,
+                ]);
+            }
         } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+           throw new ForbiddenHttpException('Are you a Core Member?');
         }
     }
 

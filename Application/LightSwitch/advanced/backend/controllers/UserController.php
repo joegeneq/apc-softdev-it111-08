@@ -19,7 +19,7 @@ class UserController extends Controller
     public function behaviors()
     {
         return [
-            'access' => [
+           /* 'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
@@ -32,7 +32,7 @@ class UserController extends Controller
                         'roles' => ['@'],
                     ],
                 ],
-            ],
+           ],*/ 
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

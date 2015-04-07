@@ -26,9 +26,9 @@ $this->params['breadcrumbs'][] = $this->title;
 				<?= $form->field($model, 'firstname')->label('Firstname:') ?>
 				<?= $form->field($model, 'lastname') ?>
                 <?php 
-                    $authItems = ArrayHelper::map($authItems,'name','name');
+                    $authItems = ArrayHelper::map($authItems,'name','name')
                  ?>
-				<?= $form->field($model, 'roles')->checkboxList($authItems); ?>
+				<?= $form->field($model, 'roles')->checkboxList($authItems) ?>
 
                 <div class="form-group">
                     <?= Html::submitButton('Signup', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
