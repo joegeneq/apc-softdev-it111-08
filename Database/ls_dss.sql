@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4
+-- version 4.1.12
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 07, 2015 at 10:07 PM
--- Server version: 5.5.32
--- PHP Version: 5.4.16
+-- Generation Time: Apr 08, 2015 at 06:35 AM
+-- Server version: 5.6.16
+-- PHP Version: 5.5.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `ls_dss`
 --
-CREATE DATABASE IF NOT EXISTS `ls_dss` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `ls_dss`;
 
 -- --------------------------------------------------------
 
@@ -59,9 +57,7 @@ CREATE TABLE IF NOT EXISTS `auth_assignment` (
 
 INSERT INTO `auth_assignment` (`item_name`, `user_id`, `created_at`) VALUES
 ('Administrator', 30, NULL),
-('Client', 28, NULL),
-('Core-Members', 26, NULL),
-('None-Core-Members', 29, NULL);
+('Client', 35, NULL);
 
 -- --------------------------------------------------------
 
@@ -275,22 +271,22 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password_hash` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password_reset_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `roles` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `roles` smallint(6) NOT NULL DEFAULT '10',
   `company` int(11) NOT NULL,
   `status` smallint(6) NOT NULL DEFAULT '10',
   `created_at` int(11) NOT NULL,
   `updated_at` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `company` (`company`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=31 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=36 ;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `username`, `firstname`, `lastname`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `roles`, `company`, `status`, `created_at`, `updated_at`) VALUES
-(28, 'test2', 'test2', 'tets', '8bP1zk7MJuJlY4-aLSBAN-Gf9FLus5wz', '$2y$13$3EsP5.ukTLI/JK.Wkz16le5Fa/eaJv./TxtFOjmUgjWgNd8LLttbq', NULL, 'testtest@testc.test1', '', 0, 10, 1427675166, 1427675166),
-(30, 'admin', 'admin', 'nstration', '18x7fmHzzaPutNpTWYsWPphDCtD6jx-w', '$2y$13$HVM30jH1jfz1c.UvV71sTupdAPKdAqv9rG.6ZMze/VSSWpFKyrwcK', NULL, 'admin@sample.com', '', 0, 10, 1427856104, 1427856104);
+(30, 'admin', 'admin', 'nstration', '18x7fmHzzaPutNpTWYsWPphDCtD6jx-w', '$2y$13$HVM30jH1jfz1c.UvV71sTupdAPKdAqv9rG.6ZMze/VSSWpFKyrwcK', NULL, 'admin@sample.com', 10, 0, 10, 1427856104, 1427856104),
+(35, 'demo', 'demo', 'nstration', 'Zfy2DiESxf5kxDC6p04l71t3ZpgJdnq9', '$2y$13$VGorOUOmQzAipcFaKWQXTeN/cFq9e1r0rz6s.DkF6Ivqnxh9xdHNa', NULL, 'demo@sample.com', 10, 0, 10, 1428442029, 1428442029);
 
 --
 -- Constraints for dumped tables

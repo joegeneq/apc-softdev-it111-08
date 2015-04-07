@@ -49,7 +49,6 @@ class ProjectController extends Controller
      */
     public function actionView($id)
     {
-        if( Yii::$app->user->can('Core-Members'))
         {
             return $this->render('view', [
                 'model' => $this->findModel($id),
