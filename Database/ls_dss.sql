@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 07, 2015 at 09:57 PM
+-- Generation Time: Apr 07, 2015 at 10:07 PM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.16
 
@@ -32,6 +32,8 @@ CREATE TABLE IF NOT EXISTS `archive` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `archive_name` varchar(45) NOT NULL,
   `archive_number` int(11) NOT NULL,
+  `file_name` varchar(45) NOT NULL,
+  `files` varchar(200) NOT NULL,
   `added_by` varchar(45) NOT NULL,
   `time_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
