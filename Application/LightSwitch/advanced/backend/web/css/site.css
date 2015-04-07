@@ -125,8 +125,7 @@ a.desc:after {
 
 .navbar-inverse {
  background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#919191));
-  background: -moz-linear-gradient(top, #A9DE91, #3B8215);
-  background: -o-linear-gradient(top, #A9DE91,  #3B8215);
+ background: -moz-linear-gradient(center top , #505050, #2F2F2F) repeat scroll 0% 0% transparent;
   border-color: transparent;
 }
 
