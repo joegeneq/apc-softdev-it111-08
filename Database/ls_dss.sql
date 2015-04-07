@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.12
+-- version 4.0.4
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 01, 2015 at 10:46 AM
--- Server version: 5.6.16
--- PHP Version: 5.5.11
+-- Generation Time: Apr 07, 2015 at 09:06 PM
+-- Server version: 5.5.32
+-- PHP Version: 5.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `ls_dss`
 --
+CREATE DATABASE IF NOT EXISTS `ls_dss` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `ls_dss`;
 
 -- --------------------------------------------------------
 
@@ -214,6 +216,23 @@ CREATE TABLE IF NOT EXISTS `migration` (
 INSERT INTO `migration` (`version`, `apply_time`) VALUES
 ('m000000_000000_base', 1424330563),
 ('m130524_201442_init', 1424330580);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `project`
+--
+
+CREATE TABLE IF NOT EXISTS `project` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `project_number` int(11) NOT NULL,
+  `client_company_name` varchar(45) NOT NULL,
+  `status` varchar(45) NOT NULL,
+  `record_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_by` varchar(45) NOT NULL,
+  `time_updated` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
