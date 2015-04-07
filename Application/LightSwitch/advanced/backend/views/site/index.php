@@ -87,7 +87,9 @@ $this->title = 'The Lightswitch';
             
             <div class="col-lg-9">
                 <p>
-                   <iframe src="https://www.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=malonzo16%40gmail.com&amp;color=%232952A3&amp;ctz=Pacific%2FMidway" style=" border-width:0 " width="1150" height="600" frameborder="0" scrolling="no"></iframe>
+
+                    <iframe src="https://www.google.com/calendar/embed?title=Demo%20Calendar&amp;height=600&amp;wkst=1&amp;bgcolor=%23c0c0c0&amp;src=jm4v2ikfflpjmfe8bcnaf6ovi0%40group.calendar.google.com&amp;color=%2323164E&amp;ctz=Asia%2FManila" style=" border:solid 1px #777 " width="1100" height="600" frameborder="0" scrolling="no"></iframe>
+
                 </p>
             </div>
             <div class="col-lg-3">
