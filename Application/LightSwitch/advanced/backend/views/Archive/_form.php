@@ -10,11 +10,15 @@ use yii\widgets\ActiveForm;
 
 <div class="archive-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'archive_name')->textInput(['maxlength' => 45]) ?>
 
     <?= $form->field($model, 'archive_number')->textInput() ?>
+
+    <?= $form->field($model, 'file_name')->textInput(['maxlength' => 45]) ?>
+
+    <?= $form->field($model, 'file' )->fileInput(); ?>
 
     <?= $form->field($model, 'added_by')->textInput(['maxlength' => 45]) ?>
 
