@@ -5,7 +5,7 @@ namespace backend\controllers;
 use Yii;
 use app\models\Inventory;
 use app\models\InventorySearch;
-
+//use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -19,7 +19,6 @@ class InventoryController extends Controller
     public function behaviors()
     {
         return [
-            
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -76,7 +75,7 @@ class InventoryController extends Controller
                 ]);
             }
         } else {
-           throw new ForbiddenHttpException('Are you a Core Member?');
+           throw new ForbiddenHttpException('Are you a authorized Member?');
         }
     }
 
@@ -89,14 +88,19 @@ class InventoryController extends Controller
      */
     public function actionUpdate($Code, $user_id)
     {
-        $model = $this->findModel($Code, $user_id);
+        if( Yii::$app->user->can('Core-Members'))
+        {   
+            $model = $this->findModel($Code, $user_id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'Code' => $model->Code, 'user_id' => $model->user_id]);
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'Code' => $model->Code, 'user_id' => $model->user_id]);
+            } else {
+                return $this->render('update', [
+                    'model' => $model,
+                ]);
+            }
         } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+           throw new ForbiddenHttpException('Are you a authorized Member?');
         }
     }
 
@@ -109,9 +113,14 @@ class InventoryController extends Controller
      */
     public function actionDelete($Code, $user_id)
     {
-        $this->findModel($Code, $user_id)->delete();
+        if( Yii::$app->user->can('Core-Members'))
+        {
+            $this->findModel($Code, $user_id)->delete();
 
-        return $this->redirect(['index']);
+            return $this->redirect(['index']);
+        } else {
+           throw new ForbiddenHttpException('Are you a authorized Member?');
+        }
     }
 
     /**

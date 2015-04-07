@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use yii\web\ForbiddenHttpException;
 
 /**
  * ArchiveController implements the CRUD actions for Archive model.
@@ -61,14 +62,19 @@ class ArchiveController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Archive();
+        if( Yii::$app->user->can('Core-Members'))
+        {
+            $model = new Archive();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            } else {
+                return $this->render('create', [
+                    'model' => $model,
+                ]);
+            }
         } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+           throw new ForbiddenHttpException('Are you a authorized Member?');
         }
     }
 
@@ -80,25 +86,30 @@ class ArchiveController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        if( Yii::$app->user->can('Core-Members'))
+        {
+            $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
-            // get the instance of the uploaded file
-             $imageName = $model->file_name;
-             $model->file = UploadedFile::getInstance($model,'file');
-             $model->file->saveAs('uploads/'.$imageName.'.'.$model->file->extension);
+                // get the instance of the uploaded file
+                 $imageName = $model->file_name;
+                 $model->file = UploadedFile::getInstance($model,'file');
+                 $model->file->saveAs('uploads/'.$imageName.'.'.$model->file->extension);
 
-             // save the file path in the db column
-             $model->files = 'uploads/'.$imageName.'.'.$model->file->extension;
-             $model->save();
+                 // save the file path in the db column
+                 $model->files = 'uploads/'.$imageName.'.'.$model->file->extension;
+                 $model->save();
 
-             
-            return $this->redirect(['view', 'id' => $model->id]);
+                 
+                return $this->redirect(['view', 'id' => $model->id]);
+            } else {
+                return $this->render('update', [
+                    'model' => $model,
+                ]);
+            }
         } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+           throw new ForbiddenHttpException('Are you a authorized Member?');
         }
     }
 
@@ -110,9 +121,14 @@ class ArchiveController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        if( Yii::$app->user->can('Core-Members'))
+        {
+            $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+            return $this->redirect(['index']);
+        } else {
+           throw new ForbiddenHttpException('Are you a authorized Member?');
+        }
     }
 
     /**

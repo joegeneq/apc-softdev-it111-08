@@ -76,8 +76,8 @@ class UserController extends Controller
      */
     public function actionCreate()
     {
-        //if( Yii::$app->user->can('Core-Members'))
-        //{
+        if( Yii::$app->user->can('Core-Members'))
+        {
             $model = new User();
 
                 if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -87,9 +87,9 @@ class UserController extends Controller
                     'model' => $model,
                     ]);
                 } 
-        //} else {
-           // throw new ForbiddenHttpException;
-        //}
+        } else {
+           throw new ForbiddenHttpException('Are you a authorized Member?');
+        }
         
     }
 
@@ -101,14 +101,19 @@ class UserController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        if( Yii::$app->user->can('Core-Members'))
+        {
+            $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            } else {
+                return $this->render('update', [
+                    'model' => $model,
+                ]);
+            }
         } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+           throw new ForbiddenHttpException('Are you a authorized Member?');
         }
     }
 
@@ -120,9 +125,14 @@ class UserController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        if( Yii::$app->user->can('Core-Members'))
+        {
+            $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+            return $this->redirect(['index']);
+        } else {
+           throw new ForbiddenHttpException('Are you a authorized Member?');
+        }
     }
 
     /**

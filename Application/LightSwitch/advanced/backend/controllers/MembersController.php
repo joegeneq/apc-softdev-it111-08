@@ -9,6 +9,7 @@ use app\models\membersSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\ForbiddenHttpException;
 
 /**
  * MembersController implements the CRUD actions for members model.
@@ -49,9 +50,14 @@ class MembersController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+        if( Yii::$app->user->can('Core-Members'))
+        {
+            return $this->render('view', [
+                'model' => $this->findModel($id),
+            ]);
+        } else {
+           throw new ForbiddenHttpException('Are you a authorized Member?');
+        }
     }
 
     /**
@@ -61,14 +67,19 @@ class MembersController extends Controller
      */
     public function actionCreate()
     {
-        $model = new members();
+        if( Yii::$app->user->can('Core-Members'))
+        {
+            $model = new members();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            } else {
+                return $this->render('create', [
+                    'model' => $model,
+                ]);
+            }
+         } else {
+           throw new ForbiddenHttpException('Are you a authorized Member?');
         }
     }
 
@@ -80,14 +91,19 @@ class MembersController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+         if( Yii::$app->user->can('Core-Members'))
+        {
+            $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            } else {
+                return $this->render('update', [
+                    'model' => $model,
+                ]);
+            }
         } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+           throw new ForbiddenHttpException('Are you a authorized Member?');
         }
     }
 
@@ -99,9 +115,14 @@ class MembersController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+         if( Yii::$app->user->can('Core-Members'))
+        {
+            $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+            return $this->redirect(['index']);
+        } else {
+           throw new ForbiddenHttpException('Are you a authorized Member?');
+        }
     }
 
     /**
