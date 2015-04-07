@@ -32,7 +32,7 @@ AppAsset::register($this);
                     'class' => 'navbar-inverse navbar-fixed-top',
                 ],
             ]);
-            $menuItems = [
+           /* $menuItems = [
                 ['label' => 'Home', 'url' => ['/site/index']],
                             ['label' => 'Client', 'url' => ['/user']],
                         ['label' => 'Financial', 'url' => ['/site/financial']],
@@ -41,10 +41,10 @@ AppAsset::register($this);
                             ['label' => 'Project', 'url' => ['/site/project']],
                             ['label' => 'Archive', 'url' => ['/site/archive']],
      
-                                  
+                            
                                                
                                                 
-            ];
+            ];*/
             if (Yii::$app->user->isGuest) {
                 $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
                 $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
