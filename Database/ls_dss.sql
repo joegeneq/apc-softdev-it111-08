@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 07, 2015 at 09:06 PM
+-- Generation Time: Apr 07, 2015 at 09:21 PM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.16
 
@@ -228,6 +228,8 @@ CREATE TABLE IF NOT EXISTS `project` (
   `project_number` int(11) NOT NULL,
   `client_company_name` varchar(45) NOT NULL,
   `status` varchar(45) NOT NULL,
+  `file_name` varchar(45) NOT NULL,
+  `files` varchar(200) NOT NULL,
   `record_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_by` varchar(45) NOT NULL,
   `time_updated` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
