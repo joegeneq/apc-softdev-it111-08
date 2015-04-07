@@ -10,13 +10,17 @@ use yii\widgets\ActiveForm;
 
 <div class="project-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'project_number')->textInput() ?>
 
     <?= $form->field($model, 'client_company_name')->textInput(['maxlength' => 45]) ?>
 
     <?= $form->field($model, 'status')->textInput(['maxlength' => 45]) ?>
+
+    <?= $form->field($model, 'file_name')->textInput(['maxlength' => 45]) ?>
+
+    <?= $form->field($model, 'file')->fileInput(); ?>
 
     <?= $form->field($model, 'record_added')->textInput() ?>
 

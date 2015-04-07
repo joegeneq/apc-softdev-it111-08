@@ -20,6 +20,8 @@ class Project extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+
+    public $file;
     public static function tableName()
     {
         return 'project';
@@ -34,7 +36,8 @@ class Project extends \yii\db\ActiveRecord
             [['project_number', 'client_company_name', 'status', 'updated_by'], 'required'],
             [['project_number'], 'integer'],
             [['record_added', 'time_updated'], 'safe'],
-            [['client_company_name', 'status', 'updated_by'], 'string', 'max' => 45]
+            [['file'], 'file'],
+            [['client_company_name','files', 'file_name', 'status', 'updated_by'], 'string', 'max' => 45]
         ];
     }
 
@@ -48,6 +51,8 @@ class Project extends \yii\db\ActiveRecord
             'project_number' => 'Project Number',
             'client_company_name' => 'Client Company Name',
             'status' => 'Status',
+            'file_name' => 'File Name',
+            'files' => 'Files',
             'record_added' => 'Record Added',
             'updated_by' => 'Updated By',
             'time_updated' => 'Time Updated',

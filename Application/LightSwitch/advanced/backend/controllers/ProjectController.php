@@ -8,7 +8,7 @@ use app\models\ProjectSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use yii\web\UploadedFile;
 /**
  * ProjectController implements the CRUD actions for Project model.
  */
@@ -82,6 +82,18 @@ class ProjectController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+
+             // get the instance of the uploaded file
+             $imageName = $model->file_name;
+             $model->file = UploadedFile::getInstance($model,'file');
+             $model->file->saveAs('uploads/'.$imageName.'.'.$model->file->extension );
+
+             // save the file path in the db column
+             $model->files = 'uploads/'.$imageName.'.'.$model->file->extension;
+             $model->save();
+
+             
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
