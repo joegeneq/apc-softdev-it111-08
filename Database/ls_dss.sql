@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 07, 2015 at 09:21 PM
+-- Generation Time: Apr 07, 2015 at 09:57 PM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.16
 
@@ -21,6 +21,21 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `ls_dss` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `ls_dss`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `archive`
+--
+
+CREATE TABLE IF NOT EXISTS `archive` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `archive_name` varchar(45) NOT NULL,
+  `archive_number` int(11) NOT NULL,
+  `added_by` varchar(45) NOT NULL,
+  `time_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -157,7 +172,7 @@ CREATE TABLE IF NOT EXISTS `financial` (
 --
 
 INSERT INTO `financial` (`id`, `package_price`, `receipt_no`, `receipt_date`, `vat`, `tls_cut`, `talent_fee`, `total`, `file_name`, `files`, `record_added`, `update_by`, `time_updated`) VALUES
-(11, '112312.00', 12, '0000-00-00', '21.00', '222.00', '22.00', '222222.00', 'Test Picture', 'uploads/Test Picture.png', '2015-03-29 22:37:52', 'me', '2000-01-09 16:00:00');
+(11, '112312.00', 12, '0000-00-00', '21.00', '222.00', '22.00', '222222.00', 'Test Picture', 'uploads/Test Picture.jpg', '2015-04-07 19:44:09', 'me', '2000-01-09 16:00:00');
 
 -- --------------------------------------------------------
 
@@ -234,7 +249,14 @@ CREATE TABLE IF NOT EXISTS `project` (
   `updated_by` varchar(45) NOT NULL,
   `time_updated` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `project`
+--
+
+INSERT INTO `project` (`id`, `project_number`, `client_company_name`, `status`, `file_name`, `files`, `record_added`, `updated_by`, `time_updated`) VALUES
+(1, 1, 'miguel corporation', 'Pending', 'Test File Name', 'uploads/Test File Name.jpg', '2015-04-07 19:46:15', 'ave', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 

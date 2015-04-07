@@ -87,7 +87,7 @@ class FinancialController extends Controller
             // get the instance of the uploaded file
              $imageName = $model->file_name;
              $model->file = UploadedFile::getInstance($model,'file');
-             $model->file->saveAs('uploads/'.$imageName.'.'.$model->file->extension );
+             $model->file->saveAs('uploads/'.$imageName.'.'.$model->file->extension);
 
              // save the file path in the db column
              $model->files = 'uploads/'.$imageName.'.'.$model->file->extension;
